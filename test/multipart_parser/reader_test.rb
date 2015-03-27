@@ -1,16 +1,16 @@
-require 'test/unit'
+require 'minitest/autorun'
 require File.dirname(__FILE__) + "/../../lib/multipart_parser/reader"
 require File.dirname(__FILE__) + "/../fixtures/multipart"
 
 module MultipartParser
-  class ReaderTest < Test::Unit::TestCase
+  class ReaderTest < MiniTest::Test
     def test_extract_boundary_value
-      assert_raise(NotMultipartError) do
+      assert_raises(NotMultipartError) do
         not_multipart = "text/plain"
         Reader.extract_boundary_value(not_multipart)
       end
 
-      assert_raise(NotMultipartError) do
+      assert_raises(NotMultipartError) do
         no_boundary = "multipart/form-data"
         Reader.extract_boundary_value(no_boundary)
       end
@@ -78,6 +78,7 @@ module MultipartParser
       parts = {}
 
       reader.on_error do |err|
+        puts [:err, err].inspect
         on_error_called = true
       end
 

@@ -21,7 +21,9 @@ Gem::Specification.new do |s|
       - Does not depend on any other library.
   DESCRIPTION
 
-  s.files         = `git ls-files`.split("\n")
+  s.files         = Dir.glob("{lib}/**/*")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ['lib']
+
+  s.gem.add_development_dependency 'minitest'
 end

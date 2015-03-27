@@ -1,9 +1,9 @@
-require 'test/unit'
+require 'minitest/autorun'
 require "multipart_parser/parser"
 require "fixtures/multipart"
 
 module MultipartParser
-  class ParserTest < Test::Unit::TestCase
+  class ParserTest < MiniTest::Test
     def test_init_with_boundary
       parser = Parser.new
       def parser.boundary; @boundary end
