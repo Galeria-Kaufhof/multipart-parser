@@ -78,7 +78,6 @@ module MultipartParser
       parts = {}
 
       reader.on_error do |err|
-        puts [:err, err].inspect
         on_error_called = true
       end
 
